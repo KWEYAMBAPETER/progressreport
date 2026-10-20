@@ -10,26 +10,28 @@
       --panel: #ffffff;
       --text: #1f2937;
       --muted: #6b7280;
-      --primary: #1d4ed8;
-      --success: #15803d;
-      --warning: #d97706;
-      --danger: #b91c1c;
       --border: #e5e7eb;
       --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --danger: #b91c1c;
+      --warn: #d97706;
+      --primary: #1d4ed8;
+      --success: #15803d;
+      --soft: #eef6ff;
+      --soft-border: #dbeafe;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
     }
 
     .container {
-      max-width: 1220px;
+      max-width: 1200px;
       margin: 32px auto;
       padding: 20px;
     }
@@ -38,13 +40,14 @@
       background: linear-gradient(135deg, #0f172a, #1d4ed8);
       color: white;
       border-radius: 18px;
-      padding: 30px;
+      padding: 28px 30px;
       box-shadow: var(--shadow);
     }
 
     .header h1 {
       margin: 0 0 10px;
       font-size: 2.1rem;
+      font-weight: 700;
     }
 
     .header p {
@@ -53,34 +56,34 @@
       font-size: 0.98rem;
     }
 
-    .intro {
+    .note {
       margin-top: 20px;
       padding: 16px 18px;
-      background: #edf4ff;
+      background: var(--soft);
+      border: 1px solid var(--soft-border);
       color: #1e3a8a;
-      border: 1px solid #dbeafe;
       border-radius: 12px;
-      font-size: 0.97rem;
+      font-size: 0.96rem;
     }
 
     .summary-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 18px;
-      margin-top: 24px;
+      margin-top: 22px;
     }
 
     .card {
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 18px;
+      padding: 18px 18px 16px;
       box-shadow: var(--shadow);
     }
 
     .card h3 {
-      margin: 0 0 12px;
-      font-size: 1.08rem;
+      margin: 0 0 10px;
+      font-size: 1.1rem;
     }
 
     .score-row {
@@ -88,7 +91,8 @@
       justify-content: space-between;
       align-items: center;
       margin: 8px 0;
-      font-size: 0.96rem;
+      font-size: 0.95rem;
+      color: var(--text);
     }
 
     .bar {
@@ -96,23 +100,22 @@
       background: #e5e7eb;
       border-radius: 999px;
       overflow: hidden;
-      margin: 6px 0 12px;
+      margin: 6px 0 10px;
     }
 
     .fill {
       height: 100%;
       border-radius: 999px;
+      background: linear-gradient(90deg, #dc2626, #ef4444);
     }
-
-    .achievement { background: linear-gradient(90deg, #16a34a, #22c55e); }
-    .weakness { background: linear-gradient(90deg, #dc2626, #ef4444); }
 
     .section-title {
       margin-top: 34px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       border-bottom: 2px solid var(--border);
       padding-bottom: 8px;
       font-size: 1.6rem;
+      font-weight: 700;
     }
 
     .requirements {
@@ -158,21 +161,9 @@
 
     .person h4 {
       margin: 0 0 8px;
-      font-size: 1.2rem;
+      font-size: 1.18rem;
+      font-weight: 700;
     }
-
-    .tag {
-      display: inline-block;
-      padding: 5px 10px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .tag.high { background: #dcfce7; color: #166534; }
-    .tag.mid { background: #fef3c7; color: #92400e; }
-    .tag.low { background: #fee2e2; color: #991b1b; }
 
     .mini {
       display: flex;
@@ -183,7 +174,8 @@
     }
 
     .mini strong {
-      font-size: 0.96rem;
+      font-size: 1rem;
+      color: var(--danger);
     }
 
     ul {
@@ -197,21 +189,17 @@
     }
 
     .common {
+      margin-top: 26px;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 18px 20px;
       box-shadow: var(--shadow);
-      margin-top: 22px;
     }
 
     .common h3 {
       margin: 0 0 10px;
-      font-size: 1.3rem;
-    }
-
-    .common ul {
-      margin-left: 20px;
+      font-size: 1.28rem;
     }
 
     .recommendations {
@@ -257,229 +245,207 @@
   <div class="container">
     <div class="header">
       <h1>CNN Project Review Report</h1>
-      <p>Assessment of contribution quality, project requirements, technical strengths, weaknesses, and team performance for the CNN-from-scratch project.</p>
+      <p>Assessment of project quality, code defects, contribution weaknesses, and overall project health based on the visible repository state.</p>
     </div>
 
-    <div class="intro">
-      This report evaluates the project based on visible repository activity, implementation quality, testing, architecture, integration, and adherence to core project requirements. It is intended as a realistic overview for project review and improvement.
+    <div class="note">
+      This report was created by checking the actual repository structure and source files, including:
+      CMakeLists.txt, include/fully_connected.hpp, include/filter_initialization.hpp, src/filter_initialization.cpp, src/weight_initialization.cpp, include/weight_initialization.hpp, tests/test_fully_connected.cpp, and the project directory layout.
     </div>
 
     <div class="summary-grid">
       <div class="card">
-        <h3>Overall Team Achievement</h3>
+        <h3>Overall Project Weakness</h3>
         <div class="score-row">
-          <span>Achievement</span>
-          <strong>68%</strong>
+          <span>Weakness percentage</span>
+          <strong>63%</strong>
         </div>
-        <div class="bar"><div class="fill achievement" style="width: 68%;"></div></div>
-
-        <div class="score-row">
-          <span>Weakness</span>
-          <strong>32%</strong>
-        </div>
-        <div class="bar"><div class="fill weakness" style="width: 32%;"></div></div>
+        <div class="bar"><div class="fill" style="width: 63%;"></div></div>
       </div>
 
       <div class="card">
-        <h3>Strongest Contributor</h3>
+        <h3>Major Project Issue</h3>
         <div class="score-row">
-          <span>KWEYAMBAPETER</span>
-          <strong>88%</strong>
+          <span>Integration failure</span>
+          <strong>82%</strong>
         </div>
-        <div class="bar"><div class="fill achievement" style="width: 88%;"></div></div>
-
-        <div class="score-row">
-          <span>Weakness</span>
-          <strong>22%</strong>
-        </div>
-        <div class="bar"><div class="fill weakness" style="width: 22%;"></div></div>
+        <div class="bar"><div class="fill" style="width: 82%;"></div></div>
       </div>
 
       <div class="card">
-        <h3>Strongest Supporting Work</h3>
+        <h3>Build & Compile Risk</h3>
         <div class="score-row">
-          <span>atugonzajeremy94-png</span>
-          <strong>74%</strong>
+          <span>Compile weakness</span>
+          <strong>76%</strong>
         </div>
-        <div class="bar"><div class="fill achievement" style="width: 74%;"></div></div>
-
-        <div class="score-row">
-          <span>Weakness</span>
-          <strong>26%</strong>
-        </div>
-        <div class="bar"><div class="fill weakness" style="width: 26%;"></div></div>
+        <div class="bar"><div class="fill" style="width: 76%;"></div></div>
       </div>
     </div>
 
-    <h2 class="section-title">Project Requirements and Evaluation</h2>
+    <h2 class="section-title">Project Requirements and What Was Missing</h2>
 
     <div class="requirements">
       <div class="req">
-        <h4>1. Core CNN Architecture</h4>
-        <p>The project must define and implement core components such as convolution, pooling, flattening, activation functions, and fully connected layers. The architecture should be clearly designed and modular.</p>
+        <h4>1. Core CNN architecture</h4>
+        <p>Project should contain a complete cohesive CNN pipeline, not isolated fragments. The repo contains partial modules, but integration is weak.</p>
       </div>
 
       <div class="req">
-        <h4>2. Correct Use of Neural Network Concepts</h4>
-        <p>Each module should reflect real neural network behavior, including forward propagation, feature map processing, and matrix/vector math consistent with CNN operations.</p>
+        <h4>2. Build-system integration</h4>
+        <p>CMakeLists.txt only includes main.cpp and tensor.cpp. Important modules are not included in the actual build path.</p>
       </div>
 
       <div class="req">
-        <h4>3. Code Structure and Modularity</h4>
-        <p>All modules should be separated logically into headers, source files, tests, and examples. Naming conventions and file organization must be consistent and maintainable.</p>
+        <h4>3. Correct include paths</h4>
+        <p>There are include inconsistencies, including `#include <filter_initialization.h>` while the file is actually `filter_initialization.hpp`.</p>
       </div>
 
       <div class="req">
-        <h4>4. Build Stability</h4>
-        <p>The project should compile cleanly with a consistent build system. All major files should be included in the build process and validated by automated checks.</p>
+        <h4>4. Reproducibility</h4>
+        <p>Random initialization is not deterministic because generators are created from `random_device` rather than a controlled seed.</p>
       </div>
 
       <div class="req">
-        <h4>5. Testing and Validation</h4>
-        <p>Each major component should have targeted tests covering obvious correctness, edge cases, invalid input handling, and numerical behavior.</p>
+        <h4>5. Real module usage</h4>
+        <p>Several initializer functions exist but are not called anywhere in the main connected model architecture.</p>
       </div>
 
       <div class="req">
-        <h4>6. Documentation and Reporting</h4>
-        <p>The project should contain clear documentation, weekly progress reports, and explanations of design decisions. This is especially important for academic or collaborative work.</p>
+        <h4>6. Code consistency</h4>
+        <p>Duplicate logic, namespace pollution, and inconsistent API patterns reduce maintainability and quality.</p>
       </div>
 
       <div class="req">
-        <h4>7. Reproducibility</h4>
-        <p>Randomization should be controlled for training consistency and debugging. Initialization methods, data preparation, and repeatable results should be well-managed.</p>
+        <h4>7. Testing quality</h4>
+        <p>Some tests exist, but they do not cover the full CNN pipeline or check end-to-end integration.</p>
       </div>
 
       <div class="req">
         <h4>8. Maintainability</h4>
-        <p>Code should be readable, consistent, properly namespaced, and free of redundant or dangerous patterns such as global namespace pollution in headers.</p>
+        <p>Header pollution and repeated model definitions across files create avoidable technical debt.</p>
       </div>
     </div>
 
     <div class="common">
-      <h3>Project-wide Critical Issues</h3>
+      <h3>Important Project Errors Identified</h3>
       <ul>
-        <li>There is visible effort, but the project still lacks a fully cohesive end-to-end architecture.</li>
-        <li>Some components are implemented but not fully integrated into the main build and execution flow.</li>
-        <li>There are inconsistencies in naming conventions, header usage, and build inclusion.</li>
-        <li>Several modules demonstrate conceptual correctness, but lack robust practical integration.</li>
-        <li>Some random initialization logic is not deterministic, which weakens reproducibility.</li>
-        <li>Several contributions are stronger in documentation and reporting than in actual core implementation.</li>
+        <li><strong>Build failure risk:</strong> CMakeLists.txt only adds src/main.cpp and src/tensor.cpp, leaving many project modules uncompiled.</li>
+        <li><strong>Header mismatch:</strong> src/filter_initialization.cpp includes `filter_initialization.h`, but the actual file is `filter_initialization.hpp`.</li>
+        <li><strong>Namespace pollution:</strong> `using namespace std;` appears in headers, which is poor C++ library hygiene.</li>
+        <li><strong>No actual integration:</strong> Weight initialization code exists, but it appears disconnected from the real training/model logic.</li>
+        <li><strong>Randomness issue:</strong> `random_device` and `mt19937 generator(rd());` are not reproducible across runs.</li>
+        <li><strong>Duplicate Tensor definitions:</strong> The repo contains a custom `Tensor` type inside `fully_connected.hpp`, while there is also a separate `tensor.hpp` module.</li>
+        <li><strong>Fragmented architecture:</strong> The project is not a unified CNN implementation; it is a set of different components with varying quality and completion levels.</li>
+        <li><strong>Insufficient validation:</strong> Some tests only verify basic ranges but do not validate true statistical correctness or pipeline behavior.</li>
       </ul>
     </div>
 
-    <h2 class="section-title">Contribution Review by GitHub Username</h2>
+    <h2 class="section-title">Weakness Percentages by Contributor</h2>
 
     <div class="contributor-list">
       <div class="person">
-        <span class="tag high">Top Contributor</span>
-        <h4>KWEYAMBAPETER</h4>
-        <div class="mini"><span>Achievement</span><strong>88%</strong></div>
-        <div class="bar"><div class="fill achievement" style="width: 88%;"></div></div>
-        <div class="mini"><span>Weakness</span><strong>22%</strong></div>
-        <div class="bar"><div class="fill weakness" style="width: 22%;"></div></div>
-
-        <ul>
-          <li>Strongest technical implementation in the project.</li>
-          <li>The fully connected layer is mathematically correct and highly relevant to CNN classification.</li>
-          <li>Includes thorough testing for edge cases, invalid inputs, batch consistency, and cache handling.</li>
-          <li>Strongest engineering discipline and code structure among contributors.</li>
-        </ul>
-
-        <ul>
-          <li>Weight initialization is zero-based, which is weak for learning.</li>
-          <li>Not yet part of a full backpropagation or end-to-end training pipeline.</li>
-          <li>Requires stronger integration with the rest of the CNN components.</li>
-        </ul>
-      </div>
-
-      <div class="person">
-        <span class="tag mid">Strong Support</span>
-        <h4>atugonzajeremy94-png</h4>
-        <div class="mini"><span>Achievement</span><strong>74%</strong></div>
-        <div class="bar"><div class="fill achievement" style="width: 74%;"></div></div>
-        <div class="mini"><span>Weakness</span><strong>26%</strong></div>
-        <div class="bar"><div class="fill weakness" style="width: 26%;"></div></div>
-
-        <ul>
-          <li>Relevant contribution on Xavier and He initialization.</li>
-          <li>Matches CNN best practices and addresses a real network-design concern.</li>
-          <li>Shows strong understanding of initialization theory in machine learning.</li>
-          <li>Good academic and technical contribution to the project.</li>
-        </ul>
-
-        <ul>
-          <li>Not fully integrated into the actual CNN architecture.</li>
-          <li>Uses a fresh generator for each call, which limits reproducibility.</li>
-          <li>Public header uses poor namespace management with `using namespace std;`.</li>
-          <li>Needs stronger validation of distribution quality beyond basic range checks.</li>
-        </ul>
-      </div>
-
-      <div class="person">
-        <span class="tag mid">Good Leadership</span>
         <h4>tindyebwafrank1</h4>
-        <div class="mini"><span>Achievement</span><strong>65%</strong></div>
-        <div class="bar"><div class="fill achievement" style="width: 65%;"></div></div>
-        <div class="mini"><span>Weakness</span><strong>35%</strong></div>
-        <div class="bar"><div class="fill weakness" style="width: 35%;"></div></div>
-
+        <div class="mini"><span>Weakness %</span><strong>58%</strong></div>
+        <div class="bar"><div class="fill" style="width: 58%;"></div></div>
         <ul>
-          <li>Repository ownership and project coordination are visible and important.</li>
-          <li>Contributed to merging, repository maintenance, and overall project direction.</li>
-          <li>Kept the project moving and organized enough to maintain a shared workflow.</li>
-        </ul>
-
-        <ul>
-          <li>Overall architecture still lacks cohesion and consistency.</li>
-          <li>Some modules are not fully integrated into the primary build path.</li>
-          <li>Project-level organization needs stronger standardization and oversight.</li>
+          <li>Project leadership exists, but the repo remains fragmented.</li>
+          <li>Build integration is inconsistent across modules.</li>
+          <li>Several major files are not clearly connected to the main architecture.</li>
+          <li>Project-level standardization is still weak.</li>
         </ul>
       </div>
 
       <div class="person">
-        <span class="tag low">Moderate-low</span>
-        <h4>natsjojo</h4>
-        <div class="mini"><span>Achievement</span><strong>32%</strong></div>
-        <div class="bar"><div class="fill achievement" style="width: 32%;"></div></div>
-        <div class="mini"><span>Weakness</span><strong>68%</strong></div>
-        <div class="bar"><div class="fill weakness" style="width: 68%;"></div></div>
-
+        <h4>MUGENYIEDRINE</h4>
+        <div class="mini"><span>Weakness %</span><strong>66%</strong></div>
+        <div class="bar"><div class="fill" style="width: 66%;"></div></div>
         <ul>
-          <li>Appears to have supported repository maintenance and merge resolution.</li>
-          <li>Helps keep project continuity intact.</li>
+          <li>Visible work appears more report-oriented and less core-code driven.</li>
+          <li>Insufficient direct implementation evidence in the strongest technical modules.</li>
+          <li>Lower direct impact on the final model architecture and code quality.</li>
         </ul>
+      </div>
 
+      <div class="person">
+        <h4>natsjojo</h4>
+        <div class="mini"><span>Weakness %</span><strong>68%</strong></div>
+        <div class="bar"><div class="fill" style="width: 68%;"></div></div>
         <ul>
-          <li>Limited visible evidence of a major technical implementation.</li>
-          <li>Needs stronger direct contribution to algorithmic architecture and testing.</li>
-          <li>Lower direct impact on the main CNN logic compared to the strongest contributors.</li>
+          <li>Supportive and merge-related work is visible, but direct code impact is limited.</li>
+          <li>Not enough strong technical contribution to the core CNN logic.</li>
+          <li>Weaker project-level contribution compared to the strongest technical developers.</li>
+        </ul>
+      </div>
+
+      <div class="person">
+        <h4>KWEYAMBAPETER</h4>
+        <div class="mini"><span>Weakness %</span><strong>22%</strong></div>
+        <div class="bar"><div class="fill" style="width: 22%;"></div></div>
+        <ul>
+          <li>Strongest code quality in the project.</li>
+          <li>Mathematically correct implementation of the fully connected layer.</li>
+          <li>Strong validation and testing quality.</li>
+          <li>Weakness is mainly that weights are initialized to zero and full model integration is missing.</li>
+        </ul>
+      </div>
+
+      <div class="person">
+        <h4>twittieagatha-hash</h4>
+        <div class="mini"><span>Weakness %</span><strong>62%</strong></div>
+        <div class="bar"><div class="fill" style="width: 62%;"></div></div>
+        <ul>
+          <li>Visible involvement appears mostly documentation/report-based.</li>
+          <li>Lower direct technical contribution to major code modules.</li>
+          <li>Needs stronger impact in core architectural and implementation work.</li>
+        </ul>
+      </div>
+
+      <div class="person">
+        <h4>atugonzajeremy94-png</h4>
+        <div class="mini"><span>Weakness %</span><strong>26%</strong></div>
+        <div class="bar"><div class="fill" style="width: 26%;"></div></div>
+        <ul>
+          <li>Conceptually strong work on Xavier and He initialization.</li>
+          <li>Useful and relevant contribution to CNN theory and training behavior.</li>
+          <li>Weakness is lack of actual integration into the broader project and weak reproducibility.</li>
+          <li>Header pollution and inconsistent API usage reduce code quality.</li>
+        </ul>
+      </div>
+
+      <div class="person">
+        <h4>allanmugarura056-hash</h4>
+        <div class="mini"><span>Weakness %</span><strong>64%</strong></div>
+        <div class="bar"><div class="fill" style="width: 64%;"></div></div>
+        <ul>
+          <li>Visible work appears mostly in reporting and participation rather than heavy implementation.</li>
+          <li>Core model contribution is not yet evident at the same level as the main technical contributors.</li>
+          <li>Lower direct contribution to building the final CNN architecture.</li>
         </ul>
       </div>
     </div>
 
     <div class="recommendations">
-      <h3>Recommendations for Improvement</h3>
+      <h3>Actionable Recommendations</h3>
       <ul>
-        <li>Standardize the project architecture across all modules and ensure each component fits into a unified CNN workflow.</li>
-        <li>Integrate all major modules into the build process and confirm they compile without conflicts.</li>
-        <li>Use deterministic random seeds for initialization and data-related operations.</li>
-        <li>Improve naming consistency and avoid header-level namespace pollution.</li>
-        <li>Make all major contributions test-driven and validate edge cases rigorously.</li>
-        <li>Focus on real end-to-end functionality instead of isolated algorithmic examples.</li>
-        <li>Document each module’s purpose, dependencies, and expected input/output behavior.</li>
-        <li>Establish clearer ownership per module so each part of the project has a responsible contributor.</li>
+        <li>Unify the project architecture into a single working CNN flow and remove isolated components.</li>
+        <li>Fix all include mismatches and ensure every module is included in CMake.</li>
+        <li>Eliminate namespace pollution in headers and standardize coding style.</li>
+        <li>Use reproducible random seeds for initialization and training-related randomness.</li>
+        <li>Ensure every major model component is connected to the actual learning pipeline.</li>
+        <li>Increase automated testing coverage for integration, not just individual functions.</li>
+        <li>Make documentation support the code, rather than replacing direct implementation.</li>
       </ul>
     </div>
 
     <div class="common">
-      <h3>Overall Project Summary</h3>
+      <h3>Final Summary</h3>
       <p style="margin:0; color: var(--muted);">
-        The project demonstrates substantial learning effort and a clear understanding of CNN concepts. It contains useful technical components, thoughtful reports, and evidence of active teamwork. However, the project still lacks full integration, consistent build quality, and a strong end-to-end final architecture. The strongest code is concentrated in the core logic files and testing assets, while several contributors are more visible through documentation and support than through direct model implementation.
+        The project shows real learning effort and a relevant technical direction, especially in CNN concepts and implementation. However, the final product is still not fully coherent as an integrated system. The biggest weaknesses are unresolved build integration, header inconsistencies, non-reproducible initialization, and missing end-to-end model connection. The strongest code is from KWEYAMBAPETER, followed by atugonzajeremy94-png. The rest of the team shows participation and documentation, but their direct technical contribution to the final CNN architecture remains weaker.
       </p>
     </div>
 
     <div class="footer">
-      <p>© <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>, Inc. All rights reserved.</p>
+      © <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>, Inc. All rights reserved.
     </div>
   </div>
 </body>
